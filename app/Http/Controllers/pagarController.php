@@ -70,7 +70,7 @@ class pagarController extends Controller
                 return back()->with('error', 'No tienes productos en el carrito'); // Redirigir con mensaje de error
             }
             // Calcula el total y redondea a 0 decimales
-            $Total = round($totalPagar + $totalPagarOferta + 3500, 0);
+            $Total = round($totalPagar + $totalPagarOferta + ($totalPagar + $totalPagarOferta)*0.02, 0);
             $transbankController = app(TransbankController::class);
             $url_to_pay = $transbankController->star_web_pay_plus_transaction($compraId, $clienteId, $Total);
 
@@ -81,10 +81,16 @@ class pagarController extends Controller
     {
         foreach ($comprasofertas as $oferta) {
             if ($oferta->cantidad_en_compra < $oferta->cantof) {
-                // Retornar un array con el mensaje de error
+
                 return [
                     'error' => true,
                     'mensaje' => 'No hay suficientes existencias disponibles para ' . $oferta->nombrem . '. Por favor, cambie la cantidad de compras. ♥'
+                ];
+            }
+            if ($oferta->fechaexp > now()) {
+                return [
+                    'error' => true,
+                    'mensaje' => 'La oferta para ' . $oferta->nombrem . ' ha expirado. Por favor, eliminela de su carrito de compra.'
                 ];
             }
         }

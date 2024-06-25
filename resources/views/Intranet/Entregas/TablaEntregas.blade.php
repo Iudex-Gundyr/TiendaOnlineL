@@ -11,7 +11,7 @@
     <tbody>
         @if($compras->isEmpty())
         <tr>
-            <td colspan="4">No existen compras con estas características.</td>
+            <td colspan="4">No existen entregas que realizar.</td>
         </tr>
     @else
         @foreach ($compras as $compra)

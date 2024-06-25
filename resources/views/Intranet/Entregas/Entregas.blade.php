@@ -9,6 +9,7 @@
     <title>Entregas</title>
 </head>
 <body>
+
     @include('Intranet/Principales/navbar')
     @include('Intranet/ErrorSucces')
     <div class="container">

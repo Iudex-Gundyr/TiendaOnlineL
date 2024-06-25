@@ -125,10 +125,10 @@
             ${{ number_format($totalPagar, 0, ',', '.') }} CLP<br>
             Productos con oferta
             ${{ number_format($totalPagarOferta, 0, ',', '.') }} CLP<br>
-            Delivery
-            ${{ number_format(3500, 0, ',', '.') }} CLP<br>
+            Servicios y pago en linea (2%)
+            ${{ number_format(($totalPagar + $totalPagarOferta)*0.02, 0, ',', '.') }} CLP<br>
             Total a pagar
-            ${{ number_format($totalPagar + $totalPagarOferta + 3500, 0, ',', '.') }} CLP
+            ${{ number_format($totalPagar + $totalPagarOferta + ($totalPagar + $totalPagarOferta)*0.02, 0, ',', '.') }} CLP
             <a href="/pagar">pagar</a>
         </div>
     @else

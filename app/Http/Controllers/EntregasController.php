@@ -58,4 +58,13 @@ class EntregasController extends Controller
 
         return view('Intranet/Entregas/DetalleEntregas/DetalleEntregas', compact('detallesCompra','detallesCompraOferta','cliente','id'));
     }
+
+    public function realizarEntrega($id)
+    {
+        // Actualizar el estado de la compra con el ID proporcionado
+        Compra::where('id', $id)->update(['fk_id_estadoc' => 3]);
+
+        // Redirigir a la ruta '/entregas' con un mensaje de éxito usando el método with()
+        return redirect('/entregas')->with('success', 'El producto fue entregado con éxito');
+    }
 }
