@@ -65,7 +65,10 @@ class pagarController extends Controller
 
             $totalPagar = $carritoCompraController->pagarCarrito($clienteId);
             $totalPagarOferta = $carritoCompraController->pagarCarritoOferta($clienteId);
-            
+                    // Verificar si la suma es cero
+            if ($totalPagar + $totalPagarOferta == 0) {
+                return back()->with('error', 'No tienes productos en el carrito'); // Redirigir con mensaje de error
+            }
             // Calcula el total y redondea a 0 decimales
             $Total = round($totalPagar + $totalPagarOferta + 3500, 0);
             $transbankController = app(TransbankController::class);

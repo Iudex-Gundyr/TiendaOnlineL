@@ -17,7 +17,7 @@
             </div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="/misDatos" class="nav-link"><i class="fas fa-user"></i> Mis datos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-shopping-bag"></i> Mis compras</a></li>
+                <li class="nav-item"><a href="/MisCompras" class="nav-link"><i class="fas fa-shopping-bag"></i> Mis compras</a></li>
                 <li class="nav-item"><a href="/cerrarSesion" class="nav-link"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
             </ul>
 

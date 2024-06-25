@@ -20,7 +20,8 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CarritoCompraController;
 use App\Http\Controllers\pagarController;
 use App\Http\Controllers\TransbankController;
-use App\Http\Controllers\comprasController;
+use App\Http\Controllers\ComprasController;
+use App\Http\Controllers\EntregasController;
 
 //Login
 
@@ -124,6 +125,12 @@ Route::get('/tomarCategorias/{id}', [matOfertasController::class, 'tomarCategori
 Route::get('/materialesPorCategoriaMarca/{idCategoria}/{idMarca}', [matOfertasController::class, 'materialesPorCategoriaMarca'])->name('materialesPorCategoriaMarca')->middleware('auth:usuarios');
 Route::get('/materiales/{idCategoria}', [matOfertasController::class, 'materiales'])->name('materiales')->middleware('auth:usuarios');
 
+//Entregas
+
+Route::get('/entregas',[entregasController::class,'entregas'])->name('entregas')->middleware('auth:usuarios');
+Route::get('/verDetallesEntrega/{id}',[entregasController::class,'verDetallesEntrega'])->name('verDetallesEntrega')->middleware('auth:usuarios');
+Route::get('/realizarEntrega/{id}',[entregasController::class,'realizarEntrega'])->name('realizarEntrega')->middleware('auth:usuarios');
+
 
 
 
@@ -189,7 +196,9 @@ Route::get('/confirmar_pago', [pagarController::class, 'confirmar_pago'])->name(
 
 //Mis Compras
 
-Route::get('/MisCompras',[comprasController::class,'MisCompras'])->name('MisCompras');
+
+Route::get('/DetallesMisCompras/{id}',[ComprasController::class,'DetallesMisCompras'])->name('DetallesMisCompras');
+Route::get('/MisCompras',[ComprasController::class,'MisCompras'])->name('MisCompras');
 
 
 

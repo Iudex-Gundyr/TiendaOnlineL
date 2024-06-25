@@ -24,7 +24,7 @@
 
                 <ul>
                     <li><a href="/productos">Productos</a></li>
-                    <li><a href="/verCarrito" id="carritoBtn">Carrito (<span id="carritoCantidad">0</span>)</a></li>
+                    <li><a href="/verCarrito" id="carritoBtn">Carrito</a></li>
                 </ul>
             </nav>
         </div>
