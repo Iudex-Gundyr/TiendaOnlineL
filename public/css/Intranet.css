@@ -1,0 +1,166 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background: linear-gradient(135deg, #00146e, #3a3a3a);
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar li {
+    padding: 10px;
+    text-align: left;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+}
+
+.navbar li:hover {
+    background-color: #263268;
+}
+.sub-menu {
+    display: none;
+    padding-left: 20px;
+}
+
+.sub-menu li {
+    padding: 5px 0;
+    margin-left: 25px;
+}
+
+.sub-menu li:hover {
+    padding: 5px 0;
+    background-color: #2a40a1;
+}
+
+i {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+/* Estilo para los enlaces de acción */
+.action-link {
+    max-width: 100px;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #0d5caf; /* Color de fondo del botón (azul en este caso) */
+    color: #fff; /* Color del texto (blanco en este caso) */
+    text-decoration: none; /* Quitar subrayado del texto */
+    border-radius: 4px; /* Bordes redondeados */
+    margin-right: 10px; /* Espacio entre botones (opcional) */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+.action-link:hover {
+    background-color: #00264e; /* Color de fondo al pasar el mouse sobre el botón */
+}
+.action-link-red {
+    max-width: 100px;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #8b0000; /* Color de fondo del botón (azul en este caso) */
+    color: #fff; /* Color del texto (blanco en este caso) */
+    text-decoration: none; /* Quitar subrayado del texto */
+    border-radius: 4px; /* Bordes redondeados */
+    margin-right: 10px; /* Espacio entre botones (opcional) */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+.action-link-red:hover {
+    background-color: #b30000; /* Color de fondo al pasar el mouse sobre el botón */
+}
+
+.action-link-green {
+    max-width: 100px;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #006110; /* Color de fondo del botón (azul en este caso) */
+    color: #fff; /* Color del texto (blanco en este caso) */
+    text-decoration: none; /* Quitar subrayado del texto */
+    border-radius: 4px; /* Bordes redondeados */
+    margin-right: 10px; /* Espacio entre botones (opcional) */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+.action-link-green:hover {
+    background-color: #007a15; /* Color de fondo al pasar el mouse sobre el botón */
+}
+.action-link-yellow {
+    max-width: 100px;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #5a6100; /* Color de fondo del botón (azul en este caso) */
+    color: #fff; /* Color del texto (blanco en este caso) */
+    text-decoration: none; /* Quitar subrayado del texto */
+    border-radius: 4px; /* Bordes redondeados */
+    margin-right: 10px; /* Espacio entre botones (opcional) */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+.action-link-yellow:hover {
+    background-color: #687a00; /* Color de fondo al pasar el mouse sobre el botón */
+}
+
+.custom-alert {
+    padding: 20px 40px 20px 20px; /* Increased right padding */
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: relative;
+    transition: opacity 0.6s;
+}
+
+.custom-alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.custom-alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.custom-alert-closebtn {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    color: inherit;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.custom-alert-closebtn:hover {
+    color: #000;
+}
+.logo-container {
+    max-width: 150px; /* Ajusta el ancho máximo según tus necesidades */
+    margin-right: 10px; /* Margen opcional para separar del resto de los elementos */
+}
+
+.logo {
+    max-width: 70%; /* La imagen se ajustará automáticamente al tamaño máximo del contenedor */
+    height: auto; /* La altura se ajustará automáticamente manteniendo la proporción */
+}

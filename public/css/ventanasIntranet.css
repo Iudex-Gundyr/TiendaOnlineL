@@ -1,0 +1,101 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    margin-left: 250px; /* Ajusta esto al ancho de tu navbar */
+    box-sizing: border-box;
+}
+
+.box {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #f9f9f9;
+}
+
+.box:last-child {
+    margin-right: 0;
+}
+
+.divider {
+    width: 1px;
+    background-color: black;
+    margin: 0 10px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: calc(100% - 22px); /* Para ajustar al padding */
+    margin-top: 5px;
+}
+input:hover {
+    padding: 10px;
+    border: 1px solid #7a7a7a;
+    border-radius: 3px;
+    width: calc(100% - 22px); /* Para ajustar al padding */
+    margin-top: 5px;
+}
+button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: calc(20% - 22px); /* Para ajustar al padding */
+
+    margin-top: 5px;
+}
+button:hover {
+    padding: 10px;
+    border: 1px solid #7a7a7a;
+    border-radius: 3px;
+    width: calc(20% - 22px); /* Para ajustar al padding */
+    margin-top: 5px;
+}
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: calc(100% - 22px); /* Para ajustar al padding */
+    margin-top: 5px;
+}
+select:hover {
+    padding: 10px;
+    border: 1px solid #7a7a7a;
+    border-radius: 3px;
+    width: calc(100% - 22px); /* Para ajustar al padding */
+    margin-top: 5px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
