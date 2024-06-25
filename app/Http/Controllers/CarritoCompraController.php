@@ -134,21 +134,12 @@ class CarritoCompraController extends Controller
     {
         try {
             // Realizar la consulta para obtener el total a pagar
-            $totalPagar = DB::table('material_oferta')
-                ->selectRaw('COALESCE(SUM((ma.valorm * (1 - o.porcentajeof / 100)) * cof.cantidad), 0) AS totalPagar_sumado')
-                ->join('ofertas AS o', 'o.id', '=', 'material_oferta.fk_id_oferta')
-                ->join('materiales AS ma', 'ma.id', '=', 'material_oferta.fk_id_material')
-                ->join('carrito_oferta AS cof', 'material_oferta.id', '=', 'cof.fk_id_materialoferta')
-                ->leftJoin('compra_oferta AS co', function ($join) {
-                    $join->on('co.fk_id_Moferta', '=', 'material_oferta.id')
-                         ->where(function ($query) {
-                             $query->where('co.fk_id_estadoel', 2)
-                                   ->whereRaw('TIMESTAMPDIFF(HOUR, co.created_at, NOW()) < 1');
-                         })
-                         ->orWhere('co.fk_id_estadoel', 1)
-                         ->orWhereNull('co.fk_id_estadoel');
-                })
-                ->where('material_oferta.fk_id_estadoel', 1)
+            $totalPagar =  DB::table('material_oferta')
+            ->selectRaw('COALESCE(SUM((ma.valorm * (1 - o.porcentajeof / 100)) * cof.cantidad), 0) AS totalPagar_sumado')
+            ->join('ofertas AS o', 'o.id', '=', 'material_oferta.fk_id_oferta')
+            ->join('materiales AS ma', 'ma.id', '=', 'material_oferta.fk_id_material')
+            ->join('carrito_oferta AS cof', 'material_oferta.id', '=', 'cof.fk_id_materialoferta')
+            ->where('material_oferta.fk_id_estadoel', 1)
                 ->where('cof.fk_id_cliente', $clienteId)
                 ->first();
     

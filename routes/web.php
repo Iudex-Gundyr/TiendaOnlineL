@@ -4,21 +4,23 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IntranetController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuariosController;
-use App\http\Controllers\PrivilegiosController;
-use App\http\Controllers\CategoriasController;
-use App\http\Controllers\CiudadesController;
-use App\http\Controllers\MarcasController;
-use App\http\Controllers\MaterialesController;
+use App\Http\Controllers\PrivilegiosController;
+use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\CiudadesController;
+use App\Http\Controllers\MarcasController;
+use App\Http\Controllers\MaterialesController;
 use App\Http\Controllers\FotosDescripcionController;
-use App\http\Controllers\CantidadController;
-use App\http\Controllers\PaisController;
-use App\http\Controllers\RegionController;
-use App\http\Controllers\Ofertascontroller;
-use App\http\Controllers\matOfertasController;
-use App\http\Controllers\TiendaController;
-use App\http\Controllers\ClienteController;
-use App\http\Controllers\CarritoCompraController;
+use App\Http\Controllers\CantidadController;
+use App\Http\Controllers\PaisController;
+use App\Http\Controllers\RegionController;
+use App\Http\Controllers\Ofertascontroller;
+use App\Http\Controllers\matOfertasController;
+use App\Http\Controllers\TiendaController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CarritoCompraController;
 use App\Http\Controllers\pagarController;
+use App\Http\Controllers\TransbankController;
+use App\Http\Controllers\comprasController;
 
 //Login
 
@@ -180,9 +182,15 @@ Route::post('/actualizarCantidad', [CarritoCompraController::class, 'actualizarC
 Route::post('/actualizarCantidadOferta', [CarritoCompraController::class, 'actualizarCantidadOferta'])->name('actualizarCantidadOferta');
 Route::post('/eliminarCarritoOferta/{id}',[CarritoCompraController::class,'eliminarCarritoOferta'])->name('eliminarCarritoOferta');
 
-//PagarControlador
+//Pagar
 
 Route::get('/pagar', [pagarController::class, 'pagar'])->name('pagar');
+Route::get('/confirmar_pago', [pagarController::class, 'confirmar_pago'])->name('confirmar_pago');
+
+//Mis Compras
+
+Route::get('/MisCompras',[comprasController::class,'MisCompras'])->name('MisCompras');
+
 
 
 
