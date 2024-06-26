@@ -22,6 +22,7 @@ use App\Http\Controllers\pagarController;
 use App\Http\Controllers\TransbankController;
 use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\EntregasController;
+use App\Http\Controllers\ClientesIntranetController;
 
 //Login
 
@@ -131,6 +132,12 @@ Route::get('/entregas',[entregasController::class,'entregas'])->name('entregas')
 Route::get('/verDetallesEntrega/{id}',[entregasController::class,'verDetallesEntrega'])->name('verDetallesEntrega')->middleware('auth:usuarios');
 Route::get('/realizarEntrega/{id}',[entregasController::class,'realizarEntrega'])->name('realizarEntrega')->middleware('auth:usuarios');
 
+//ClientesIntranet
+
+Route::get('/ClienteIntranet',[ClientesIntranetController::class,'ClienteIntranet'])->name('ClienteIntranet')->middleware('auth:usuarios');
+Route::get('/ComprasCliente/{id}',[ClientesIntranetController::class,'ComprasCliente'])->name('ComprasCliente')->middleware('auth:usuarios');
+
+
 
 
 
@@ -160,8 +167,6 @@ Route::post('/recuperarPass',[ClienteController::class,'recuperarPass'])->name('
 
 
 Route::middleware(['auth:cliente'])->group(function () {
-
-    // Rutas para clientes autenticados
     Route::get('/misDatos', [ClienteController::class, 'misDatos'])->name('misDatos');
     Route::post('/actualizarCliente',[ClienteController::class,'actualizarCliente'])->name('actualizarCliente');
 });

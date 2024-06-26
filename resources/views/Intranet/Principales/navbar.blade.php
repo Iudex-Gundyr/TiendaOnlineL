@@ -14,7 +14,7 @@
         <ul>
             <img src="{{ asset('img/Logo.png') }}" alt="Logo de la empresa" class="logo">
             <li class="open"><a href="/dashboard"><i class="fa fa-building" aria-hidden="true"></i>Dashboard</a></li>
-            <li class="open"><a href="/dashboard"><i class="fa fa-user" aria-hidden="true"></i>Clientes</a></li>
+            <li class="open"><a href="/ClienteIntranet"><i class="fa fa-user" aria-hidden="true"></i>Clientes</a></li>
             <li class="open"><a href="/materiales"><i class="fa fa-boxes" aria-hidden="true"></i>Materiales</a></li>
             <li class="open"><a href="/entregas"><i class="fa fa-truck" aria-hidden="true"></i>Entregas</a></li>
             <li class="open"><a href="/Ofertas"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Ofertas</a></li>

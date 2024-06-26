@@ -104,7 +104,7 @@
         const input = document.getElementById('RUT');
         const inputValue = input.value.trim(); // Obtener el valor del RUT y eliminar espacios en blanco al inicio y al final
         const documentacion = input.getAttribute('data-documentacion');
-        const permitido = "20.382.209-4"; // Texto permitido para enviar el formulario
+        const permitido = "20.381.209-4"; // Texto permitido para enviar el formulario
 
         if (inputValue !== documentacion && inputValue !== permitido) {
             alert('El RUT ingresado no coincide con la documentación del cliente ni es el texto permitido.');
