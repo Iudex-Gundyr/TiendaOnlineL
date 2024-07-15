@@ -87,7 +87,7 @@ class pagarController extends Controller
                     'mensaje' => 'No hay suficientes existencias disponibles para ' . $oferta->nombrem . '. Por favor, cambie la cantidad de compras. ♥'
                 ];
             }
-            if ($oferta->fechaexp > now()) {
+            if ($oferta->fechaexp < now()) {
                 return [
                     'error' => true,
                     'mensaje' => 'La oferta para ' . $oferta->nombrem . ' ha expirado. Por favor, eliminela de su carrito de compra.'
@@ -164,59 +164,8 @@ class pagarController extends Controller
         ];
     }
 
-    public function confirmar_pago(Request $request)
-    {
-        $token = $request->input('token_ws');
-        $confirmacion = (new Transaction)->commit($token);
-        $clienteId = Auth::guard('cliente')->id();
-        if (!$clienteId) {
-            return back()->with('error', 'Debes iniciar sesión para pagar y ver tu carrito ♥');
-        }
-    
-        if ($confirmacion->isApproved()) {
-            // Transacción aprobada
-            $compra = Compra::find($confirmacion->buyOrder);
-    
-            if ($compra) {
-                $compra->fk_id_estadoc = 2; // Estado de la compra a "aprobada"
-                $compra->save();
-    
-                // Actualizar estado de las compras de oferta asociadas
-                CompraOferta::where('fk_id_compra', $confirmacion->buyOrder)
-                    ->update(['fk_id_estadoel' => 1]); // Estado de la compra de oferta a "aprobada"
-    
-                // Actualizar estado de los materiales comprados asociados
-                CompraMateriales::where('fk_id_compra', $confirmacion->buyOrder)
-                    ->update(['fk_id_estadoel' => 1]); // Estado del material comprado a "aprobado"
-                CarritoMaterial::where('fk_id_cliente', $clienteId)->delete();
-                CarritoOferta::where('fk_id_cliente', $clienteId)->delete();
 
-                return redirect()->route('verCarrito')
-                    ->with('success_message', '¡Gracias por comprar con nosotros! Recibirás una confirmación pronto.');
-            } else {
-                return redirect()->route('verCarrito')
-                    ->with('error_message', 'Compra no encontrada. Por favor, inténtalo de nuevo o contacta con soporte.');
-            }
-        } else {
-            // Transacción no aprobada
-    
-            // Eliminar registros de CompraMateriales y CompraOferta no aprobados
-            CompraMateriales::where('fk_id_compra', $confirmacion->buyOrder)->delete();
-            CompraOferta::where('fk_id_compra', $confirmacion->buyOrder)->delete();
-
-            // Actualizar estado de la compra a "fallida" (estado 4 en la base de datos)
-            $compra = Compra::find($confirmacion->buyOrder);
-            if ($compra) {
-                $compra->fk_id_estadoc = 4; // Estado de la compra a "fallida"
-                $compra->save();
-            }
-    
-            return redirect()->route('verCarrito')
-                ->with('error', 'Pago no aprobado. Por favor, inténtalo de nuevo o contacta con nuestro soporte. :(');
-        }
-    }
     
     
     
-
 }

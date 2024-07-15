@@ -16,8 +16,8 @@ class FotosDescripcionController extends Controller
         ->join('usuarios as creador', 'materiales.fk_id_usuariocre', '=', 'creador.id')
         ->join('usuarios as actualizador', 'materiales.fk_id_usuarioupd', '=', 'actualizador.id')
         ->first();
-        $fotos = Fotos::all();
-        $descripciones = Descripcion::all();
+        $fotos = Fotos::where('fk_id_material',$id)->get();
+        $descripciones = Descripcion::where('fk_id_material',$id)->get();
         return view('Intranet/Materiales/FotosDescripcion/FotosDescripcion', compact('fotos','material','descripciones'));
 
     }

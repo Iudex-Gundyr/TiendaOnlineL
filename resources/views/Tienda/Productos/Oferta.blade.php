@@ -1,38 +1,38 @@
 @include('Tienda/Tienda')
 
-<h1 style="text-align: center">{{ $noferta->nombreof }}</h1>
+<h1 class="text-center">{{ $noferta->nombreof }}</h1>
 <div class="container">
 
     @if ($ofertas->isEmpty())
         <p>No quedan productos para esta oferta.</p>
     @else
         @foreach ($ofertas as $oferta) 
-            <div class="product-card">
+            <div class="card mt-3" >
                 {{-- Imagen del producto --}}
                 @if ($oferta->fotos)
-                    <img src="data:image/jpeg;base64,{{ base64_encode($oferta->fotos) }}" alt="Foto">
+                    <img src="data:image/jpeg;base64,{{ base64_encode($oferta->fotos) }}" class="card-img-top img-product object-fit-contain " alt="Foto">
                 @else
                     <p>No hay fotos disponibles</p>
                 @endif  
                 {{-- Detalles del producto --}}
-                <div class="product-details">
+                <div class="card-body">
                     <h2>{{ $oferta->nombrem }}</h2> {{-- Nombre del oferta --}}
-                    <p class="price">${{ number_format($oferta->valorm - ($oferta->valorm * $oferta->porcentajeof / 100)) }} CLP</p>
-                    <p class="price" style="text-decoration: line-through; color: #888; font-size: 0.7em;">${{ number_format($oferta->valorm) }} CLP</p>
+                    <p class="card-text">${{ number_format($oferta->valorm - ($oferta->valorm * $oferta->porcentajeof / 100)) }} CLP</p>
+                    <p class="card-text" style="text-decoration: line-through; color: #888; font-size: 0.7em;">${{ number_format($oferta->valorm) }} CLP</p>
 
                     @if ($oferta->descripciones)
-                        <p>{{ $oferta->descripciones }}</p>
+                        <p class="card-text">{{ $oferta->descripciones }}</p>
                     @else
-                        <p>No hay descripciones disponibles</p>
+                        <p class="card-text">No hay descripciones disponibles</p>
                     @endif
                     <p>Cantidad restante: {{ $oferta->cantidad_en_compra }}</p> {{-- Cantidad restante --}}
-                    <select name="cantidad" id="cantidad{{ $oferta->id }}">
+                    <select name="cantidad" id="cantidad{{ $oferta->id }}" class="form-select form-select-sm" >
                         @for ($i = 1; $i <= $oferta->cantidad_en_compra; $i++)
                             <option value="{{ $i }}">{{ $i }} unidad/es</option>
                         @endfor
                     </select>
                     
-                    <button id="agregar-carrito-oferta-{{ $oferta->id }}" class="agregar-carritoOferta" data-id="{{ $oferta->id }}">Agregar al carrito</button>
+                    <button id="agregar-carrito-oferta-{{ $oferta->id }}" class="agregar-carritoOferta btn btn-lg btn-primary mt-2" data-id="{{ $oferta->id }}">Agregar al carrito</button>
                     
                     
                     
@@ -96,3 +96,4 @@ $(document).ready(function() {
 });
 
 </script>
+@include('Tienda/footer')

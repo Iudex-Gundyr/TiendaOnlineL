@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -7,27 +7,28 @@
     <!-- Asegurar que el token CSRF esté presente -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body>
+<body> --}}
 @include('Tienda/Tienda')
 
-<div>
-    <h1 class="carrito-titulo">Carrito de Compra</h1>
+<div class="container">
+    <h1 class="h1  fw-bold">Carrito de Compra</h1>
 
     @auth('cliente')
 
 
-        <div class="table-container">
+
+        <div class="table-responsive ">
             @forelse($materiales as $material)
                 @if ($loop->first)
-                    <table class="styled-table">
+                    <table class="table border shadow-sm p-3 mb-5 bg-body-tertiary rounded">
                         <thead>
                             <tr>
-                                <th>Productos</th>
-                                <th>Valor unitario</th>
-                                <th>Cantidad a comprar</th>
-                                <th>Valor a pagar</th>
-                                <th>Disponibles</th>
-                                <th>opciones</th>
+                                <th  scope="col">Productos</th>
+                                <th  scope="col">Valor unitario</th>
+                                <th  scope="col">Cantidad a comprar</th>
+                                <th  scope="col">Total</th>
+                                <th  scope="col">Disponibles</th>
+                                <th  scope="col">opciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,7 +37,7 @@
                                 <td>{{ $material->nombrem }}</td>
                                 <td>${{ number_format($material->valorm, 0, ',', '.') }} CLP</td>
                                 <td>
-                                    <select name="cantidad" id="cantidad{{$material->id}}" onchange="actualizarCantidad({{ $material->carrito_id }}, this.value)">
+                                    <select name="cantidad" id="cantidad{{$material->id}}"  class="form-select" onchange="actualizarCantidad({{ $material->carrito_id }}, this.value)">
                                         <option value="{{$material->cantidad}}" hidden>{{$material->cantidad}} unidad/es</option>
                                         @for ($i = 1; $i <= $material->cantidad_restante; $i++)
                                             <option value="{{ $i }}">{{ $i }} unidad/es</option>
@@ -50,7 +51,7 @@
                                     <form id="eliminarForm{{$material->carrito_id}}" method="POST" action="{{ route('eliminarCarrito', ['id' => $material->carrito_id]) }}">
                                         @csrf
                                         @method('POST')
-                                        <button type="submit">Eliminar</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
                                     </form>
                                 </td>
 
@@ -61,24 +62,27 @@
                 @endif
             @empty
 
-                <p class="carrito-vacio">No hay productos en el carrito normal.</p>
+                <p class="text-danger">No hay productos en el carrito normal.</p>
             @endforelse
         </div>
-        <h1 class="carrito-titulo">Carrito de ofertas</h1>
-        <div class="table-container">
+
+
+
+        <h1 class="h2 ">Carrito de ofertas</h1>
+        <div class="table-responsive">
             @forelse($materialesOferta as $material)
                 @if ($loop->first)
-                    <table class="styled-table">
+                    <table class="table shadow-sm p-3 mb-5 bg-body-tertiary rounded">
                         <thead>
                             <tr>
-                                <th>Productos</th>
-                                <th>descuento</th>
-                                <th>Valor unitario (Oferta incluida)</th>
-                                <th>Cantidad a comprar</th>
+                                <th scope="col" >Productos</th>
+                                <th scope="col">descuento</th>
+                                <th scope="col">Valor unitario (Oferta incluida)</th>
+                                <th scope="col">Cantidad a comprar</th>
 
-                                <th>Valor a pagar (Oferta incluida)</th>
-                                <th>Disponibles</th>
-                                <th>opciones</th>
+                                <th scope="col">Valor a pagar (Oferta incluida)</th>
+                                <th scope="col">Disponibles</th>
+                                <th scope="col">opciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -88,7 +92,7 @@
                                 <td>{{ $material->porcentajeof }}%</td>
                                 <td>${{ number_format($material->valor_con_descuento, 0, ',', '.') }} CLP</td>
                                 <td>
-                                    <select name="cantidad" id="cantidad{{$material->id}}" onchange="actualizarCantidadOferta({{ $material->carrito_id }}, this.value)">
+                                    <select name="cantidad" id="cantidad{{$material->id}}" class="form-select"  onchange="actualizarCantidadOferta({{ $material->carrito_id }}, this.value)">
                                         <option value="{{$material->cantof}}" hidden>{{$material->cantof}} unidad/es</option>
                                         @for ($i = 1; $i <= $material->cantidad_en_compra; $i++)
                                             <option value="{{ $i }}">{{ $i }} unidad/es</option>
@@ -102,7 +106,7 @@
                                     <form id="eliminarForm{{$material->carrito_id}}" method="POST" action="{{ route('eliminarCarritoOferta', ['id' => $material->carrito_id]) }}">
                                         @csrf
                                         @method('POST')
-                                        <button type="submit">Eliminar</button>
+                                        <button type="submit" class="btn btn-primary">Eliminar</button>
                                     </form>
                                 </td>
 
@@ -113,28 +117,34 @@
                 @endif
             @empty
 
-                <p class="carrito-vacio">No hay productos en el carrito de ofertas.</p>
+                <p class="text-danger">No hay productos en el carrito de ofertas.</p>
             @endforelse
         </div>
 
 
 
-        <div class="table-container">
-            <h2>Total a pagar</h2>
-            Productos sin oferta
-            ${{ number_format($totalPagar, 0, ',', '.') }} CLP<br>
+        <div class="card mb-2 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+            <div class="card-body">
+            <h2 class="card-title fw-bold">Total a pagar</h2>
+            <p class="card-text fw-bold">
+           Productos sin oferta
+            ${{ number_format($totalPagar, 0, ',', '.') }} CLP <br>
             Productos con oferta
             ${{ number_format($totalPagarOferta, 0, ',', '.') }} CLP<br>
             Servicios y pago en linea (2%)
             ${{ number_format(($totalPagar + $totalPagarOferta)*0.02, 0, ',', '.') }} CLP<br>
             Total a pagar
             ${{ number_format($totalPagar + $totalPagarOferta + ($totalPagar + $totalPagarOferta)*0.02, 0, ',', '.') }} CLP
-            <a href="/pagar">pagar</a>
+            </p>
+           
+            <a href="/pagar" class="btn btn-success btn-lg">Continuar la compra</a>
         </div>
     @else
         <p class="carrito-mensaje">Debes iniciar sesión para armar y ver tu carrito.</p>
         <p><a href="{{ route('login') }}" class="carrito-enlace">Iniciar sesión</a></p>
     @endauth
+            </div>
+         
 
 </div>
 
@@ -175,3 +185,4 @@
     });
 }
 </script>
+@include('Tienda/footer')

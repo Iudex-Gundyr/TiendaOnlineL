@@ -19,7 +19,9 @@ class ComprasController extends Controller
         }
         $compras = DB::table('compra as c')
         ->join('estadoc as e', 'c.fk_id_estadoc', '=', 'e.id')
-        ->select('c.id', 'c.created_at', 'e.nombreest')->where('fk_id_cliente', $clienteId)
+        ->select('c.id', 'c.created_at', 'e.nombreest')
+        ->where('fk_id_cliente', $clienteId)
+        ->orderBy('c.created_at', 'desc')  // Ordenar por fecha de creación ascendente
         ->get();
 
         return view('Tienda/Cliente/MisCompras', compact('compras'));

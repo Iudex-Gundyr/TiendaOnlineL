@@ -24,6 +24,9 @@ class TiendaController extends Controller
         $perPage = 12; // Número de productos por página
         $offset = ($page - 1) * $perPage; // Calcular el offset para la paginación
     
+        // Ajustar la longitud máxima permitida para GROUP_CONCAT
+        DB::statement('SET SESSION group_concat_max_len = 1000000');
+    
         $materiales = Materiales::select(
                 'materiales.id',
                 'materiales.codigob',
@@ -68,6 +71,7 @@ class TiendaController extends Controller
         return $materiales;
     }
     
+    
     public function productos($n = 1)
     {
         $ofertas = $this->tablaOfertas();
@@ -103,6 +107,9 @@ class TiendaController extends Controller
     {
         $perPage = 12; // Número de productos por página
         $offset = ($n - 1) * $perPage; // Calcular el offset para la paginación
+
+        // Ajustar la longitud máxima permitida para GROUP_CONCAT
+        DB::statement('SET SESSION group_concat_max_len = 1000000');
     
         $materiales = Materiales::select(
                 'materiales.id',
@@ -173,12 +180,13 @@ class TiendaController extends Controller
     {
         $ofertas = $this->materialesOferta($id);
         $noferta = Ofertas::where('id', $id)->first();
-        return view('Tienda\Productos\Oferta',compact('ofertas','noferta'));
+        return view('Tienda/Productos/Oferta' ,compact('ofertas','noferta'));
     }
     public function materialesOferta($id)
     {
 
-
+        // Ajustar la longitud máxima permitida para GROUP_CONCAT
+        DB::statement('SET SESSION group_concat_max_len = 1000000');
 
         $subQuery = DB::table('compra_oferta')
             ->select('fk_id_Moferta', DB::raw('SUM(CASE 

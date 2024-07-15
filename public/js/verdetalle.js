@@ -25,3 +25,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+let imgs = document.getElementsByClassName("zoom");
+
+for (let img of imgs) {
+  img.onmousemove = function(e) {
+    e.target.style.setProperty('--x', (100 * e.offsetX / e.target.offsetWidth) + '%');
+    e.target.style.setProperty('--y', (100 * e.offsetY / e.target.offsetHeight) + '%');
+  }
+}

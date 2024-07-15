@@ -14,8 +14,9 @@
     <div class="container">
 
         <div class="box">
-            <h2>Crear Nueva Oferta.</h2>
+
             <button onclick="window.history.back()" class="btn btn-secondary">Volver</button>
+            <h2>Crear Nueva Oferta.</h2>
             <form action="{{ '/crearOferta' }}" method="POST" enctype="multipart/form-data">
                 @csrf
             

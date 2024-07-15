@@ -16,6 +16,7 @@
         <div class="divider"></div>
         <div class="box">
             <button onclick="window.history.back()" class="btn btn-secondary">Volver</button>
+            
             @include('Intranet/Clientes/tablaClientes')
         </div>
     </div>

@@ -90,7 +90,7 @@ Route::post('/crearMaterial',[MaterialesController::class,'crearMaterial'])->nam
 Route::get('/materialesfiltrar',[MaterialesController::class,'materialesfiltrar'])->name('materialesfiltrar')->middleware('auth:usuarios');
 Route::get('/modificarMaterial/{id}',[MaterialesController::class,'modificarMaterial'])->name('modificarMaterial')->middleware('auth:usuarios');
 Route::post('/updateMaterial/{id}',[MaterialesController::class,'updateMaterial'])->name('updateMaterial')->middleware('auth:usuarios');
-Route::get('/eliminarMateriales/{id}',[MaterialesController::class,'eliminarMaterial'])->name('eliminarMaterial')->middleware('auth:usuarios');
+Route::get('/eliminarMaterial/{id}',[MaterialesController::class,'eliminarMaterial'])->name('eliminarMaterial')->middleware('auth:usuarios');
 
 //CantidadMaterial
 Route::get('/cantidad/{id}',[CantidadController::class,'cantidad'])->name('cantidad')->middleware('auth:usuarios');
@@ -135,6 +135,7 @@ Route::get('/realizarEntrega/{id}',[entregasController::class,'realizarEntrega']
 //ClientesIntranet
 
 Route::get('/ClienteIntranet',[ClientesIntranetController::class,'ClienteIntranet'])->name('ClienteIntranet')->middleware('auth:usuarios');
+Route::get('/clientesfiltrar',[ClientesIntranetController::class,'clientesfiltrar'])->name('clientesfiltrar')->middleware('auth:usuarios');
 Route::get('/ComprasCliente/{id}',[ClientesIntranetController::class,'ComprasCliente'])->name('ComprasCliente')->middleware('auth:usuarios');
 
 
@@ -197,13 +198,16 @@ Route::post('/eliminarCarritoOferta/{id}',[CarritoCompraController::class,'elimi
 //Pagar
 
 Route::get('/pagar', [pagarController::class, 'pagar'])->name('pagar');
-Route::get('/confirmar_pago', [pagarController::class, 'confirmar_pago'])->name('confirmar_pago');
+Route::match(['get', 'post'], '/confirmar_pago/{compraId}', [TransbankController::class, 'confirmar_pago'])->name('confirmar_pago');
 
 //Mis Compras
 
 
 Route::get('/DetallesMisCompras/{id}',[ComprasController::class,'DetallesMisCompras'])->name('DetallesMisCompras');
 Route::get('/MisCompras',[ComprasController::class,'MisCompras'])->name('MisCompras');
+
+
+
 
 
 

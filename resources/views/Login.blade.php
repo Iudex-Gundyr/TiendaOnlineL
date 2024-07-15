@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
-</head>
-<body>
+<link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <div class="login-container">
-        <img src="{{ asset('img/Logo.png') }}" alt="Logo de la empresa" class="logo">
+        <img src="{{ asset('img/Logo.png') }}" alt="Logo de la empresa" class="logo" style="width: 200px; height: 200px;">
+
         <h2>Iniciar Sesión</h2>
         <form action="{{ route('IniciarSesion') }}" method="POST">
             @csrf
@@ -30,5 +22,3 @@
             <button type="submit" class="btn">Iniciar Sesión</button>
         </form>
     </div>
-</body>
-</html>

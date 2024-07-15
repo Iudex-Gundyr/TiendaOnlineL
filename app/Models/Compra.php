@@ -17,7 +17,8 @@ class Compra extends Model
         'fk_id_cliente',
         'fk_id_estadoc',
         'fk_id_estadoel',
-        'created_at', // Añade created_at al array fillable para permitir asignación masiva
+        'created_at',
+        'tokenpago', // Añade created_at al array fillable para permitir asignación masiva
     ];
 
     public function cliente()

@@ -63,7 +63,7 @@ class ClienteController extends Controller
         $cliente->save();
 
         // Redireccionar con mensaje de éxito
-        return redirect()->route('home')->with('success_message', '¡Te has registrado, ya puedes iniciar sesión y comprar de nuestra gran variedad de productos!');
+        return redirect()->back()->with('success_message', '¡Te has registrado, ya puedes iniciar sesión y comprar de nuestra gran variedad de productos!');
     }
 
     public function tomarRegiones($id)

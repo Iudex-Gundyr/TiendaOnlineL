@@ -1,5 +1,10 @@
 <h2>Cliente.</h2>
 <table>
+    <form action="{{ route('clientesfiltrar') }}">
+        <label for="filtroNombre">Filtrar por Nombre, Correo o RUT (el rut escribirlo con puntos y guion):</label>
+        <input type="text" id="filtroNombre" name="nombrem">
+        <input type="submit" value="Filtrar">
+    </form>
     <thead>
         <tr>
             <th>Nombre del cliente</th>

@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis compras</title>
-    <!-- Asegurar que el token CSRF esté presente -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-</head>
-<body>
 
 @include('Tienda/Tienda')
 
-<div class="table-container">
+<div class="container">
+    <div class="row">
+    <div class="table-container">
     <h1 style="text-align:center">Mis compras</h1>
-    <table class="styled-table">
+    <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Fecha</th>
-                <th>Estado de la compra</th>
-                <th>Opciones</th>
+                <th scope="col">Id</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Estado de la compra</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -40,5 +32,6 @@
     </table>
 </div>
 
-</body>
-</html>
+    </div>
+</div>
+@include('Tienda/footer')

@@ -3,7 +3,7 @@
     <thead>
         <tr>
             <th>Identificacion</th>
-            <th>hecho el</th>
+            <th>hecho el ( DD/MM/AAAA | HH::MM::SS )</th>
             <th>estado de la compra</th>
             <th>Opciones</th>
         </tr>
@@ -17,7 +17,7 @@
         @foreach ($compras as $compra)
             <tr>
                 <td>{{ $compra->id }}</td>
-                <td>{{ $compra->created_at }}</td>
+                <td>{{ \Carbon\Carbon::parse($compra->created_at)->format('d-m-Y H:i:s') }}</td>
                 <td>{{ $compra->nombreest }}</td>
                 <td>
                     <a href="/verDetallesEntrega/{{$compra->id}}" class="action-link">Ver detalles</a>

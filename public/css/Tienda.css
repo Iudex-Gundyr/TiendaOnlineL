@@ -1,4 +1,3 @@
-/* Estilos generales */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,16 +5,27 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+  
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 300;
+    font-style: normal;
+    height: 100%;
 }
 
-.container {
+.footer-down {
+    margin-top: 100px;
+    bottom: 0;
+    border-radius: 0;
+    
+}
+
+/* Estilos generales 
+ .container {
     width: 80%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-}
+} 
 
 header {
     background-color: #111cb6;
@@ -23,11 +33,11 @@ header {
     padding: 10px 0;
 }
 
-header .container {
+ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} 
 
 header h1 {
     font-size: 1.8rem;
@@ -109,7 +119,7 @@ main {
 .producto button:hover {
     background-color: #0056b3;
 }
-/* Estilos para el pie de página */
+ Estilos para el pie de página 
 footer {
     background-color: #111cb6;
     color: #fff;
@@ -123,7 +133,7 @@ footer {
 footer p {
     font-size: 0.9rem;
 }
-/* Modal Styles */
+ Modal Styles 
 .modal {
     display: none;
     position: fixed;
@@ -207,7 +217,7 @@ footer p {
     color: #333;
 }
 
-.input-group {
+ .input-group {
     margin-bottom: 15px;
     text-align: left;
 }
@@ -232,7 +242,7 @@ footer p {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-}
+}  */
 
 .alert {
     padding: 10px;
@@ -271,8 +281,10 @@ footer p {
     border-radius: 4px;
     position: relative;
     font-size: 14px;
-    width: 50%; /* Ajusta el ancho de la alerta */
-    max-width: 700px; /* Establece un ancho máximo para la alerta */
+    width: 50%;
+    /*Ajusta el ancho de la alerta  */
+    max-width: 700px;
+    /* Establece un ancho máximo para la alerta */
 }
 
 .alert-aprobed {
@@ -296,44 +308,43 @@ footer p {
     color: #c3e6cb;
 }
 
-.logo-container {
-    max-width: 150px; /* Ajusta el ancho máximo según tus necesidades */
-    margin-right: 10px; /* Margen opcional para separar del resto de los elementos */
+/* .logo-container {
+    max-width: 150px;  Ajusta el ancho máximo según tus necesidades 
+    margin-right: 10px;  Margen opcional para separar del resto de los elementos 
 }
 
 .logo {
-    max-width: 100%; /* La imagen se ajustará automáticamente al tamaño máximo del contenedor */
-    height: auto; /* La altura se ajustará automáticamente manteniendo la proporción */
-}
+    max-width: 100%;  La imagen se ajustará automáticamente al tamaño máximo del contenedor 
+    height: auto;  La altura se ajustará automáticamente manteniendo la proporción 
+} */
 
-
+/* 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.container {
+ .container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     max-width: 1000px;
     padding: 20px;
-    justify-content: center; /* Centrar las tarjetas horizontalmente */
-}
-
+    justify-content: center;  Centrar las tarjetas horizontalmente
+}  
 .product-card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 300px;
-    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves para hover */
+    transition: transform 0.3s, box-shadow 0.3s;  Transiciones suaves para hover 
 }
 
 .product-card:hover {
-    transform: translateY(-5px); /* Mover la tarjeta hacia arriba al pasar el mouse */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra aumentada al pasar el mouse */
+    transform: translateY(-5px);  Mover la tarjeta hacia arriba al pasar el mouse 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  Sombra aumentada al pasar el mouse 
 }
 
 .product-card img {
@@ -368,68 +379,68 @@ footer p {
 .container-Oferta {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente si es necesario */
-    gap: 20px; /* Espacio entre las tarjetas */
-    padding: 20px; /* Espaciado interior */
+    justify-content: center;  Centrar horizontalmente 
+    align-items: center;  Centrar verticalmente si es necesario 
+    gap: 20px;  Espacio entre las tarjetas 
+    padding: 20px;  Espaciado interior 
 }
 
 .oferta-card {
-    background-color: #f9f9f9; /* Fondo de la tarjeta */
-    border: 1px solid #ddd; /* Borde de la tarjeta */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-    overflow: hidden; /* Evitar desbordamiento */
-    width: 950px; /* Ancho aumentado de las tarjetas */
-    text-align: center; /* Centrar texto */
-    padding: 20px; /* Espaciado interior aumentado */
-    transition: transform 0.3s; /* Transición suave */
+    background-color: #f9f9f9;  Fondo de la tarjeta 
+    border: 1px solid #ddd;  Borde de la tarjeta 
+    border-radius: 10px;  Bordes redondeados 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  Sombra 
+    overflow: hidden;  Evitar desbordamiento 
+    width: 950px;  Ancho aumentado de las tarjetas 
+    text-align: center;  Centrar texto 
+    padding: 20px;  Espaciado interior aumentado 
+    transition: transform 0.3s;  Transición suave 
 }
 
 .image-container {
     width: 100%;
-    height: 300px; /* Altura fija para hacer la imagen más grande */
-    overflow: hidden; /* Esconder cualquier parte de la imagen que se desborde */
+    height: 300px;  Altura fija para hacer la imagen más grande 
+    overflow: hidden;  Esconder cualquier parte de la imagen que se desborde 
 }
 
 .image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Recortar la imagen si es necesario para llenar el contenedor */
-    border-bottom: 1px solid #ddd; /* Borde inferior de la imagen */
-    margin-bottom: 20px; /* Espaciado debajo de la imagen */
+    object-fit: cover;  Recortar la imagen si es necesario para llenar el contenedor 
+    border-bottom: 1px solid #ddd;  Borde inferior de la imagen 
+    margin-bottom: 20px;  Espaciado debajo de la imagen 
 }
 
 .oferta-card .product-details {
-    padding: 15px; /* Espaciado interior aumentado */
+    padding: 15px;  Espaciado interior aumentado 
 }
 
 .oferta-card h2 {
-    font-size: 2em; /* Tamaño de fuente del título aumentado */
-    margin: 0 0 15px; /* Margen inferior aumentado */
+    font-size: 2em;  Tamaño de fuente del título aumentado 
+    margin: 0 0 15px;  Margen inferior aumentado 
 }
 
 .oferta-card a {
-    display: inline-block; /* Enlace como bloque en línea */
-    padding: 12px 20px; /* Espaciado interior aumentado */
-    background-color: #007bff; /* Color de fondo del enlace */
-    color: #fff; /* Color del texto del enlace */
-    text-decoration: none; /* Sin subrayado */
-    border-radius: 5px; /* Bordes redondeados */
-    transition: background-color 0.3s; /* Transición suave */
+    display: inline-block;  Enlace como bloque en línea 
+    padding: 12px 20px;  Espaciado interior aumentado 
+    background-color: #007bff;  Color de fondo del enlace 
+    color: #fff;  Color del texto del enlace 
+    text-decoration: none;  Sin subrayado 
+    border-radius: 5px;  Bordes redondeados 
+    transition: background-color 0.3s;  Transición suave 
 }
 
-.oferta-card a:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+ .oferta-card a:hover {
+    background-color: #0056b3;  Color de fondo al pasar el mouse 
 }
 
 .oferta-card:hover {
-    transform: translateY(-5px); /* Mover la tarjeta hacia arriba al pasar el mouse */
-}
+    transform: translateY(-5px);  Mover la tarjeta hacia arriba al pasar el mouse 
+} 
 
 
 
-.btn {
+ .btn {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -446,32 +457,32 @@ footer p {
 
 .btn:hover {
     background-color: #45a049;
-}
+} 
 
-.image2-container {
+ .image2-container {
     display: flex;
     flex-wrap: wrap;
     max-height: 100px;
-    gap: 10px; /* Espacio entre imágenes */
+    gap: 10px;  Espacio entre imágenes 
 }
 .image2-detalle {
-    flex: 1 1 100px; /* Ajuste flexible, base de 100px */
-    max-width: 300px; /* Tamaño máximo de cada imagen */
+    flex: 1 1 100px;  Ajuste flexible, base de 100px 
+    max-width: 300px;  Tamaño máximo de cada imagen 
 
-    overflow: hidden; /* Ocultar desbordamiento */
+    overflow: hidden;  Ocultar desbordamiento 
 }
 .image2-detalle img {
     width: 100%;
     height: auto;
 
     cursor: pointer;
-    transition: transform 0.3s; /* Suaviza la transición al hacer hover */
+    transition: transform 0.3s;  Suaviza la transición al hacer hover 
 }
 .image2-detalle img:hover {
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño al hacer hover */
-}
-.modal {
-    display: none; /* Ocultar el modal por defecto */
+    transform: scale(1.05);  Aumenta ligeramente el tamaño al hacer hover 
+} 
+ .modal {
+    display: none;  Ocultar el modal por defecto 
     position: fixed;
     z-index: 1;
     left: 0;
@@ -530,19 +541,19 @@ footer p {
 .descripcion ul li {
     margin-bottom: 5px;
     text-align: left;
-    word-wrap: break-word; /* For older browsers */
-    overflow-wrap: break-word; /* For newer browsers */
-    max-width: 100%; /* Ajusta el ancho máximo según tus necesidades */
+    word-wrap: break-word;  For older browsers 
+    overflow-wrap: break-word;  For newer browsers 
+    max-width: 100%;  Ajusta el ancho máximo según tus necesidades 
 }
 
 .custom-form {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: center; /* Centra los elementos verticalmente */
-}
+    justify-content: center;  Centra los elementos horizontalmente 
+    align-items: center;  Centra los elementos verticalmente 
+} 
 
-.custom-form input[type="text"],
+ .custom-form input[type="text"],
 .custom-form select,
 .custom-form a {
     margin-bottom: 10px;
@@ -554,7 +565,7 @@ footer p {
 }
 
 .custom-form input[type="text"] {
-    width: 250px; /* Ancho específico para el input */
+    width: 250px; 
     margin-right: 15px;
 }
 
@@ -583,22 +594,19 @@ footer p {
 
 .custom-form a:hover {
     background-color: #0056b3;
-}
-/* Estilos para el título del carrito */
-.carrito-titulo {
+}  */
+Estilos para el título del carrito .carrito-titulo {
     font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
 }
 
-/* Estilos para la lista de productos en el carrito */
-.carrito-lista {
+Estilos para la lista de productos en el carrito .carrito-lista {
     list-style-type: none;
     padding: 0;
 }
 
-/* Estilos para cada ítem del carrito */
-.carrito-item {
+Estilos para cada ítem del carrito .carrito-item {
     margin-bottom: 20px;
     padding: 10px;
     background-color: #fff;
@@ -607,35 +615,30 @@ footer p {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para el nombre del producto */
-.carrito-nombre {
+Estilos para el nombre del producto .carrito-nombre {
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 5px;
 }
 
-/* Estilos para la cantidad y el precio */
-.carrito-cantidad,
+Estilos para la cantidad y el precio .carrito-cantidad,
 .carrito-precio {
     margin: 5px 0;
     font-size: 14px;
 }
 
-/* Estilos para el mensaje cuando el carrito está vacío */
-.carrito-vacio {
+Estilos para el mensaje cuando el carrito está vacío .carrito-vacio {
     font-style: italic;
     text-align: center;
 }
 
-/* Estilos para el mensaje de inicio de sesión */
-.carrito-mensaje {
+Estilos para el mensaje de inicio de sesión .carrito-mensaje {
     font-style: italic;
     text-align: center;
     margin-bottom: 10px;
 }
 
-/* Estilos para el enlace de inicio de sesión */
-.carrito-enlace {
+Estilos para el enlace de inicio de sesión .carrito-enlace {
     display: block;
     text-align: center;
     font-weight: bold;
@@ -647,8 +650,8 @@ footer p {
     text-decoration: underline;
 }
 
-
-.table-container {
+/* 
+ .table-container {
     width: 80%;
     margin: 20px auto;
     overflow-x: auto;
@@ -693,4 +696,62 @@ footer p {
 .styled-table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+}  */
+
+
+.card-header {
+    object-position: 50% 50% !important;
+    object-fit: cover !important;
+    height: 200px !important;
+}
+
+.card-header a img {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.card-zoom {
+    transition: all 0.3s;
+}
+
+.card-zoom:hover {
+    transform: scale(1.010);
+}
+
+.img-product {
+    width: 100%;
+    height: 337px;
+}
+
+.img-product-banner {
+    width: 100%;
+
+}
+
+.zoom {
+
+
+    /* the coordinate of the zoom */
+    --x: 50%;
+    --y: 50%;
+    /**/
+    transform: scale(var(--zoom));
+    transform-origin: var(--x) var(--y);
+    clip-path: inset(calc((1 - 1/var(--zoom)) * (var(--y))) calc((1 - 1/var(--zoom)) * (100% - var(--x))) calc((1 - 1/var(--zoom)) * (100% - var(--y))) calc((1 - 1/var(--zoom)) * (var(--x))));
+    width: 200px;
+    cursor: crosshair;
+}
+
+
+
+
+
+.zoom:hover {
+    --zoom: 2;
+    /* control the zoom level */
+}
+
+.relative {
+    position: relative;
 }
