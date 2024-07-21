@@ -6,6 +6,8 @@ use App\Models\Materiales;
 use App\Models\Categorias;
 use App\Models\Marcas;
 use App\Models\CantidadMat;
+use App\Models\Fotos;
+use App\Models\Descripcion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
@@ -222,12 +224,18 @@ class MaterialesController extends Controller
         try {
             // Buscar el material por su ID
             $material = Materiales::findOrFail($id);
-
-            // Actualizar fk_id_estadoel a 2
+    
+            // Eliminar fotos asociadas al material
+            Fotos::where('fk_id_material', $id)->delete();
+    
+            // Eliminar descripciones asociadas al material
+            Descripcion::where('fk_id_material', $id)->delete();
+    
+            // Actualizar fk_id_estadoel a 2 (esto puede indicar "eliminado" o "inactivo")
             $material->fk_id_estadoel = 2;
             $material->fk_id_usuarioupd = Auth::id(); // Actualizar el ID del usuario que está realizando la acción
             $material->save();
-
+    
             // Redirigir de vuelta a la lista de materiales con un mensaje de éxito
             return redirect()->back()->with('success', 'Material eliminado exitosamente.');
         } catch (\Exception $e) {
@@ -235,4 +243,5 @@ class MaterialesController extends Controller
             return redirect()->back()->with('error', 'Error al eliminar el material: ' . $e->getMessage());
         }
     }
+    
 }

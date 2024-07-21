@@ -28,27 +28,62 @@ class FotosDescripcionController extends Controller
         $request->validate([
             'foto' => 'required|image|mimes:jpeg,png|max:2048',
         ]);
-
+    
         // Obtener el archivo de la solicitud
         $file = $request->file('foto');
-
-        // Obtener el contenido binario del archivo
-        $fileContents = file_get_contents($file);
-
+        $extension = $file->getClientOriginalExtension();
+        
+        // Crear una imagen desde el archivo
+        if ($extension === 'jpeg' || $extension === 'jpg') {
+            $image = imagecreatefromjpeg($file->getRealPath());
+        } elseif ($extension === 'png') {
+            $image = imagecreatefrompng($file->getRealPath());
+        } else {
+            return redirect()->back()->with('error', 'Formato de imagen no soportado');
+        }
+    
+        // Definir las nuevas dimensiones y la calidad
+        $newWidth = 800;
+        $newHeight = 600;
+    
+        // Obtener las dimensiones originales de la imagen
+        list($width, $height) = getimagesize($file->getRealPath());
+    
+        // Crear una nueva imagen con las dimensiones definidas
+        $resizedImage = imagecreatetruecolor($newWidth, $newHeight);
+    
+        // Redimensionar la imagen
+        imagecopyresampled($resizedImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+    
+        // Guardar la imagen comprimida en un archivo temporal
+        $tempFile = tempnam(sys_get_temp_dir(), 'img');
+        if ($extension === 'jpeg' || $extension === 'jpg') {
+            imagejpeg($resizedImage, $tempFile, 75); // Calidad 75
+        } elseif ($extension === 'png') {
+            imagepng($resizedImage, $tempFile, 6); // Calidad 6
+        }
+    
+        // Obtener el contenido binario del archivo temporal
+        $fileContents = file_get_contents($tempFile);
+    
         // Crear una nueva instancia de Fotos y asignar los valores
         $fotos = new Fotos();
         $fotos->fotografia = $fileContents;
         $fotos->fk_id_material = $id;
         $fotos->save();
-
+    
+        // Limpiar recursos
+        imagedestroy($image);
+        imagedestroy($resizedImage);
+        unlink($tempFile);
+    
         // Obtener todas las fotos y el material actual
         $fotos = Fotos::where('fk_id_material', $id)->get();
- 
-
+    
         // Redirigir a la vista 'FotosDescripcion' con los datos necesarios
-        return redirect()->back()->with('succes','Imagen subida correctamente');
+        return redirect()->back()->with('success', 'Imagen subida correctamente');
     }
-
+    
     public function eliminarFoto($id)
     {
         // Encontrar la foto por su ID

@@ -32,7 +32,39 @@ class OfertasController extends Controller
         // Manejar la subida de la imagen
         if ($request->hasFile('fotografia')) {
             $file = $request->file('fotografia');
-            $fileData = file_get_contents($file);  // Convertir la imagen a formato binario
+            $filePath = $file->getPathname(); // Obtén el path temporal del archivo
+    
+            // Obtener la información de la imagen
+            $imageInfo = getimagesize($filePath);
+            $width = $imageInfo[0];
+            $height = $imageInfo[1];
+            $mime = $imageInfo['mime'];
+    
+            // Crear una imagen de GD desde el archivo subido
+            switch ($mime) {
+                case 'image/jpeg':
+                    $image = imagecreatefromjpeg($filePath);
+                    break;
+                case 'image/png':
+                    $image = imagecreatefrompng($filePath);
+                    break;
+                case 'image/gif':
+                    $image = imagecreatefromgif($filePath);
+                    break;
+                default:
+                    throw new \Exception('Tipo de imagen no soportado');
+            }
+    
+            // Comprimir la imagen
+            $compressionQuality = 75; // Ajusta la calidad de compresión (0-100)
+            ob_start(); // Inicia un buffer de salida
+            imagejpeg($image, null, $compressionQuality); // Comprime la imagen a JPEG
+            $fileData = ob_get_clean(); // Obtén los datos de la imagen comprimida y limpia el buffer
+    
+            // Liberar memoria
+            imagedestroy($image);
+        } else {
+            $fileData = null;
         }
     
         // Crear una nueva oferta (suponiendo que tienes un modelo Oferta)
@@ -47,6 +79,7 @@ class OfertasController extends Controller
         // Redirigir con un mensaje de éxito
         return redirect()->back()->with('success', 'Oferta creada exitosamente.');
     }
+    
 
     public function updateOferta($id, Request $request)
     {
@@ -61,18 +94,49 @@ class OfertasController extends Controller
         // Encontrar la oferta existente
         $oferta = Ofertas::findOrFail($id);
     
-        
         // Actualizar los datos de la oferta
         $oferta->nombreof = $validatedData['nombreof'];
         $oferta->porcentajeof = $validatedData['porcentajeof'];
         $oferta->fechaexp = $validatedData['fechaexp'];
-        // Manejar la subida de la imagen
+    
+        // Manejar la subida de la imagen si se proporciona
         if ($request->hasFile('fotografia')) {
             $file = $request->file('fotografia');
-            $fileData = file_get_contents($file);  // Convertir la imagen a formato binario
+            $filePath = $file->getPathname(); // Obtén el path temporal del archivo
+    
+            // Obtener la información de la imagen
+            $imageInfo = getimagesize($filePath);
+            $width = $imageInfo[0];
+            $height = $imageInfo[1];
+            $mime = $imageInfo['mime'];
+    
+            // Crear una imagen de GD desde el archivo subido
+            switch ($mime) {
+                case 'image/jpeg':
+                    $image = imagecreatefromjpeg($filePath);
+                    break;
+                case 'image/png':
+                    $image = imagecreatefrompng($filePath);
+                    break;
+                case 'image/gif':
+                    $image = imagecreatefromgif($filePath);
+                    break;
+                default:
+                    throw new \Exception('Tipo de imagen no soportado');
+            }
+    
+            // Comprimir la imagen
+            $compressionQuality = 75; // Ajusta la calidad de compresión (0-100)
+            ob_start(); // Inicia un buffer de salida
+            imagejpeg($image, null, $compressionQuality); // Comprime la imagen a JPEG
+            $fileData = ob_get_clean(); // Obtén los datos de la imagen comprimida y limpia el buffer
+    
+            // Liberar memoria
+            imagedestroy($image);
+    
+            // Actualizar el campo de la imagen en la oferta
             $oferta->fotografia = $fileData;
         }
-        
     
         // Guardar la oferta actualizada
         $oferta->save();
@@ -80,6 +144,7 @@ class OfertasController extends Controller
         // Redirigir con un mensaje de éxito
         return redirect()->back()->with('success', 'Oferta actualizada exitosamente.');
     }
+    
     public function eliminarOferta($id)
     {
         // Encontrar la oferta por ID
