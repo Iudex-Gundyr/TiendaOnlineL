@@ -10,30 +10,37 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav fs-5">
-                    <li class="nav-item p-3"><a href="/productos" class="nav-link text-white"><i class="bi bi-camera-video"></i>Productos</a></li>
-                    <li class="nav-item p-3"><a href="/verCarrito" class="nav-link text-white" id="carritoBtn">Carrito</a>
+                    <li class="nav-item p-3">
+                        <a href="/productos" class="nav-link text-white">
+                            <i class="bi bi-camera-video"></i>Productos
+                        </a>
                     </li>
-                    <li class="nav-item p-3"><a href="/misDatos" class="nav-link text-white"></i> Mis datos</a></li>
-                    <li class="nav-item p-3"><a href="/MisCompras" class="nav-link text-white"><i
-                                class="fas fa-shopping-bag"></i> Mis
-                            compras</a></li>
-                    <li class="nav-item p-3"><a href="/cerrarSesion" class="nav-link text-white"><i
-                                class="fas fa-sign-out-alt"></i>
-                            Cerrar sesión</a></li>
-
+                    <li class="nav-item p-3">
+                        <a href="/verCarrito" class="nav-link text-white" id="carritoBtn">
+                            Carrito (<b id="contador" style="color: yellow;">0</b>)
+                        </a>
+                    </li>
+                    <li class="nav-item p-3">
+                        <a href="/misDatos" class="nav-link text-white">
+                            <i class="bi bi-person"></i> Mis datos
+                        </a>
+                    </li>
+                    <li class="nav-item p-3">
+                        <a href="/MisCompras" class="nav-link text-white">
+                            <i class="fas fa-shopping-bag"></i> Mis compras
+                        </a>
+                    </li>
+                    <li class="nav-item p-3">
+                        <a href="/cerrarSesion" class="nav-link text-white">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                        </a>
+                    </li>
                 </ul>
               
             </div>
         </div>
     </nav>
-
-
-{{-- 
-    <div class="content">
-
-    </div>
-
-
-</body>
-
-</html> --}}
+    <script>
+        // Definir la variable global en el contexto del navegador
+        window.carritoCountUrl = "{{ route('CarritoCant') }}";
+    </script>
