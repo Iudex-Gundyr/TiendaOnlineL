@@ -10,6 +10,7 @@ use App\Models\Fotos;
 use App\Models\Marcas;
 use App\Models\Categorias;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 class TiendaController extends Controller
 {
@@ -292,6 +293,29 @@ class TiendaController extends Controller
             ->first();
         
         return $material;
+    }
+
+    public function CarritoCant()
+    {
+        // Obtiene el ID del usuario autenticado
+        $iduser = Auth::guard('cliente')->id();
+
+        // Obtiene el conteo de items en carrito_material y carrito_oferta
+        $countCarritoMaterial = DB::table('carrito_material')
+            ->where('fk_id_cliente', $iduser)
+            ->count();
+
+        $countCarritoOferta = DB::table('carrito_oferta')
+            ->where('fk_id_cliente', $iduser)
+            ->count();
+
+        // Suma los conteos
+        $totalCount = $countCarritoMaterial + $countCarritoOferta;
+
+        // Retorna la respuesta con el conteo total
+        return response()->json([
+            'total_count' => $totalCount,
+        ]);
     }
     
     

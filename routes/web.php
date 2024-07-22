@@ -176,6 +176,7 @@ Route::middleware(['auth:cliente'])->group(function () {
 //productos
 
 Route::get('/productos/{n?}', [TiendaController::class, 'productos'])->name('productos');
+Route::get('/CarritoCant', [TiendaController::class,'CarritoCant'])->name('CarritoCant');
 Route::post('/filtrarProductos/{n?}', [TiendaController::class, 'filtrarProductos'])->name('filtrarProductos');
 
 Route::get('/verDetalle/{id}',[TiendaController::class,'verDetalle'])->name('verDetalle');
