@@ -14,7 +14,7 @@
     <div class="container">
 
         <div class="box">
-            <button onclick="window.history.back()" class="btn btn-secondary">Volver</button>
+            <button onclick="window.location.href='{{ url('/Ofertas') }}'" class="btn btn-secondary">Volver</button>
             <h2>Añadiendo material a una oferta.</h2>
             <form action="{{ route('crearMatOf', $oferta->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf

@@ -15,7 +15,7 @@
     <div class="container">
         <div class="divider"></div>
         <div class="box">
-            <button onclick="window.history.back()" class="btn btn-secondary">Volver</button>
+            <button onclick="window.location.href='{{ url('/ClienteIntranet') }}'" class="btn btn-secondary">Volver</button>
             @include('Intranet/Clientes/Compras/TablaCompras')
         </div>
     </div>

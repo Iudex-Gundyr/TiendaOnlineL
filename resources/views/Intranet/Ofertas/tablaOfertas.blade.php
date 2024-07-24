@@ -1,6 +1,6 @@
 <h2>Ofertas creadas.</h2>
 <form action="{{ route('ofertasFiltrar') }}">
-    <label for="filtroNombre">Filtrar por Nombre de oferta o por codigo de barra (Dejar vacio para mostrar todos):</label>
+    <label for="filtroNombre">Filtrar por Nombre de oferta:</label>
     <input type="text" id="filtroNombre" name="nombrem">
     <input type="submit" value="Filtrar">
 </form>

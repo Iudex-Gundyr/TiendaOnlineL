@@ -14,7 +14,7 @@
     <div class="container">
 
         <div class="box">
-            <button onclick="window.history.back()" class="btn btn-secondary">Volver</button>
+            <button onclick="window.location.href='{{ url('/materiales') }}'" class="btn btn-secondary">Volver</button>
             <h2>Modificar el material {{$material->nombrem}}. </h2>
             <form action="{{ route('updateMaterial', $material->id) }}" method="POST">
                 @csrf

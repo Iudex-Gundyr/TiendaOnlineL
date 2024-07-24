@@ -14,7 +14,7 @@
     <div class="container">
 
         <div class="box">
-            <button onclick="window.history.back()" class="btn btn-secondary">Volver</button>
+            <button onclick="window.location.href='{{ url('/dashboard') }}'" class="btn btn-secondary">Volver</button>
             <h2>Modificando al usuario. {{$usuario->nombreus}}</h2>
             <form action="{{ route('updateUsuario', $usuario->id) }}" method="POST">
                 @csrf

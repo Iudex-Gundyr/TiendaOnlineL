@@ -15,7 +15,7 @@
 
         <div class="box">
 
-            <button onclick="window.history.back()" class="btn btn-secondary">Volver</button>
+            <button onclick="window.location.href='{{ url('/dashboard') }}'" class="btn btn-secondary">Volver</button>
             <h2>Crear Nueva Oferta.</h2>
             <form action="{{ '/crearOferta' }}" method="POST" enctype="multipart/form-data">
                 @csrf

@@ -14,6 +14,7 @@
     <div class="container">
 
         <div class="box">
+            <button onclick="window.location.href='{{ url('/dashboard') }}'" class="btn btn-secondary">Volver</button>
             <h2>modificando la Oferta {{$oferta->nombreof}}.</h2>
             <form action="{{ route('updateOferta', $oferta->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf

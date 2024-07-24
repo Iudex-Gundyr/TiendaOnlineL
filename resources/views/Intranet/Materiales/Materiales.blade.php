@@ -14,7 +14,7 @@
     <div class="container">
 
         <div class="box">
-            <button onclick="window.history.back()" class="btn btn-secondary">Volver</button>
+            <button onclick="window.location.href='{{ url('/dashboard') }}'" class="btn btn-secondary">Volver</button>
             <h2>Crear Nuevo Material.</h2>
             <form action="{{ route('crearMaterial') }}" method="POST">
                 @csrf

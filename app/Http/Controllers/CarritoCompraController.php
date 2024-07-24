@@ -52,7 +52,7 @@ class CarritoCompraController extends Controller
                                      END) AS total_compra
                              FROM compra_oferta
                              GROUP BY fk_id_Moferta) AS suma_cantidad'), 'suma_cantidad.fk_id_Moferta', '=', 'mo.id')
-        ->where('mo.fk_id_estadoel', 1)
+
         ->where('cof.fk_id_cliente', $clienteId)
         ->groupBy(
             'mo.id',
@@ -114,7 +114,7 @@ class CarritoCompraController extends Controller
                 ->leftJoin(DB::raw('(SELECT fk_id_materiales, SUM(cantidad) AS total_cantidad FROM cantidadmat GROUP BY fk_id_materiales) AS c'), 'materiales.id', '=', 'c.fk_id_materiales')
                 ->leftJoin(DB::raw('(SELECT fk_id_material, SUM(cantidad) AS total_cantidad FROM material_oferta WHERE fk_id_estadoel = 1 GROUP BY fk_id_material) AS co'), 'materiales.id', '=', 'co.fk_id_material')
                 ->leftJoin(DB::raw('(SELECT fk_id_materiales, SUM(CASE WHEN (created_at >= NOW() - INTERVAL 1 HOUR OR fk_id_estadoel = 1) THEN cantidad ELSE 0 END) AS total_cantidad FROM compra_materiales GROUP BY fk_id_materiales) AS cm2'), 'materiales.id', '=', 'cm2.fk_id_materiales')
-                ->where('materiales.fk_id_estadoel', 1)
+
                 ->where('cm.fk_id_cliente', $clienteId)
                 ->groupBy('materiales.id', 'materiales.codigob', 'materiales.nombrem', 'materiales.valorm', 'cm.id', 'cm.cantidad', 'cm.fk_id_material', 'cm.fk_id_cliente')
                 ->orderByDesc('materiales.id')

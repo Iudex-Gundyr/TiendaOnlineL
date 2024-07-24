@@ -18,6 +18,33 @@ class OfertasController extends Controller
         $oferta = Ofertas::where('fk_id_estadoel',1)->where('id',$id)->orderBy('id', 'desc')->take(5)->first();
         return view('Intranet/Ofertas/modificarOferta', compact('ofertas','oferta'));
     }
+    public function ofertasFiltrar(Request $request)
+    {
+        // Obtén el valor del filtro desde el request
+        $filtroNombre = $request->input('nombrem');
+    
+        // Construye la consulta con la condición base
+        $query = Ofertas::where('fk_id_estadoel', 1);
+    
+        // Agrega la condición de búsqueda si el filtro no está vacío
+        if (!empty($filtroNombre)) {
+            $query->where(function($q) use ($filtroNombre) {
+                $q->where('nombreof', 'like', '%' . $filtroNombre . '%');
+            });
+        }
+    
+        // Ejecuta la consulta ordenada y limitada a 5 resultados
+        $ofertas = $query->orderBy('id', 'desc')->take(5)->get();
+    
+        // Retorna la vista con los resultados
+        return view('Intranet/Ofertas/Ofertas', compact('ofertas'));
+    }
+    
+
+
+
+
+
 
     public function crearOferta(Request $request)
     {

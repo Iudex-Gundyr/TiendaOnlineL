@@ -14,7 +14,7 @@
     <div class="container">
 
         <div class="box">
-            <button onclick="window.history.back()" class="btn btn-secondary">Volver</button>
+            <button onclick="window.location.href='{{ url('/usuarios') }}'" class="btn btn-secondary">Volver</button>
             <h2>Agregar nuevo privilegio al usuario {{$usuario->nombreus}}.</h2>
             <form action="{{ route('agregarPrivilegio', $usuario->id) }}" method="POST">
                 @csrf

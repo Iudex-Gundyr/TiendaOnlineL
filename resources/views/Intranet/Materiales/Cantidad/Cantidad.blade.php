@@ -17,7 +17,7 @@
     <div class="container">
 
         <div class="box">
-            <button onclick="window.history.back()" class="btn btn-secondary">Volver</button>
+            <button onclick="window.location.href='{{ url('/materiales') }}'" class="btn btn-secondary">Volver</button>
             @include('Intranet/Materiales/Cantidad/tablaCantidad')
         </div>
         <div class="divider"></div>
