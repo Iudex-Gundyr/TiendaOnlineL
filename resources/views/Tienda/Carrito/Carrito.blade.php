@@ -37,12 +37,13 @@
                                 <td>{{ $material->nombrem }}</td>
                                 <td>${{ number_format($material->valorm, 0, ',', '.') }} CLP</td>
                                 <td>
-                                    <select name="cantidad" id="cantidad{{$material->id}}"  class="form-select" onchange="actualizarCantidad({{ $material->carrito_id }}, this.value)">
+                                    <select name="cantidad" id="cantidad{{$material->id}}" class="form-select" onchange="actualizarCantidad({{ $material->carrito_id }}, this.value)">
                                         <option value="{{$material->cantidad}}" hidden>{{$material->cantidad}} unidad/es</option>
-                                        @for ($i = 1; $i <= $material->cantidad_restante; $i++)
+                                        @for ($i = 1; $i <= min(50, $material->cantidad_restante); $i++)
                                             <option value="{{ $i }}">{{ $i }} unidad/es</option>
                                         @endfor
                                     </select>
+                                    
                                 </td>
                                 <td>${{ number_format($material->valor_total, 0, ',', '.') }} CLP</td>
                                 <td>{{ $material->cantidad_restante }}</td>
@@ -92,9 +93,9 @@
                                 <td>{{ $material->porcentajeof }}%</td>
                                 <td>${{ number_format($material->valor_con_descuento, 0, ',', '.') }} CLP</td>
                                 <td>
-                                    <select name="cantidad" id="cantidad{{$material->id}}" class="form-select"  onchange="actualizarCantidadOferta({{ $material->carrito_id }}, this.value)">
+                                    <select name="cantidad" id="cantidad{{$material->id}}" class="form-select" onchange="actualizarCantidadOferta({{ $material->carrito_id }}, this.value)">
                                         <option value="{{$material->cantof}}" hidden>{{$material->cantof}} unidad/es</option>
-                                        @for ($i = 1; $i <= $material->cantidad_en_compra; $i++)
+                                        @for ($i = 1; $i <= min(50, $material->cantidad_en_compra); $i++)
                                             <option value="{{ $i }}">{{ $i }} unidad/es</option>
                                         @endfor
                                     </select>

@@ -68,10 +68,11 @@
                             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                             <script src="{{ asset('js/verdetalle.js') }}"></script>
                             <select name="cantidad" id="cantidad{{ $material->id }}" class="form-select">
-                                @for ($i = 1; $i <= $material->cantidad_restante; $i++)
+                                @for ($i = 1; $i <= min(50, $material->cantidad_restante); $i++)
                                     <option value="{{ $i }}">{{ $i }} unidad/es</option>
                                 @endfor
                             </select>
+                            
 
                             <div class="mx-2 mt-2 d-grid gap-2 mx-auto mt-2 mb-2">
                                 <button id="agregar-carrito-{{ $material->id }}"

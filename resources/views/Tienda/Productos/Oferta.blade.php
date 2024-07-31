@@ -26,11 +26,11 @@
                         <p class="card-text">No hay descripciones disponibles</p>
                     @endif
                     <p>Cantidad restante: {{ $oferta->cantidad_en_compra }}</p> {{-- Cantidad restante --}}
-                    <select name="cantidad" id="cantidad{{ $oferta->id }}" class="form-select form-select-sm" >
-                        @for ($i = 1; $i <= $oferta->cantidad_en_compra; $i++)
+                    <select name="cantidad" id="cantidad{{ $oferta->id }}" class="form-select form-select-sm">
+                        @for ($i = 1; $i <= min(50, $oferta->cantidad_en_compra); $i++)
                             <option value="{{ $i }}">{{ $i }} unidad/es</option>
                         @endfor
-                    </select>
+                    </select>                    
                     
                     <button id="agregar-carrito-oferta-{{ $oferta->id }}" class="agregar-carritoOferta btn btn-lg btn-primary mt-2" data-id="{{ $oferta->id }}">Agregar al carrito</button>
                     

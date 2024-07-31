@@ -36,7 +36,7 @@ class ComprasController extends Controller
             ->get();
 
         $detallesCompraOferta = DB::table('compra_oferta as co')
-            ->join('material_oferta as mo', 'co.id', '=', 'mo.fk_id_material')
+            ->join('material_oferta as mo', 'co.fk_id_moferta', '=', 'mo.id')
             ->join('materiales as m', 'm.id', '=', 'mo.fk_id_material')
             ->select('co.valor', 'co.cantidad', 'm.nombrem', 'm.id')
             ->where('co.fk_id_compra', $id) // Suponiendo que hay una columna fk_id_compra en compra_oferta

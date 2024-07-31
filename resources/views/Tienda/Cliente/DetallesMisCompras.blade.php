@@ -1,21 +1,8 @@
-{{-- <!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis compras</title>
-    <!-- Asegurar que el token CSRF esté presente -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-</head>
-
-<body> --}}
-
-    @include('Tienda/Tienda')
+@include('Tienda/Tienda')
 
     <div class="container">
         <div class="row">
-            <h1 style="text-align:center">Mis compras</h1>
+            <h1 style="text-align:center">Productos comprados</h1>
             <table class="table">
                 <thead>
                     <tr>
@@ -40,7 +27,7 @@
                     @endforelse
                     @forelse ($detallesCompraOferta as $compra)
                     <tr>
-                        <td>{{ $compra->valorcm }}</td>
+                        <td>{{ $compra->valor }}</td>
                         <td>{{ $compra->cantidad }}</td>
                         <td>{{ $compra->nombrem }}</td>
                         <td><a href="{{ route('verDetalleMaterial', $compra->id) }}">Ver detalles</a></td>

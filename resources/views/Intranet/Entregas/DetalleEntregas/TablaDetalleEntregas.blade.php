@@ -73,7 +73,7 @@
     @else
         @foreach ($detallesCompraOferta as $compra)
             <tr>
-                <td>${{ number_format($compra->valorcm, 0, ',', '.') }} CLP</td>
+                <td>${{ number_format($compra->valor, 0, ',', '.') }} CLP</td>
                 <td>{{ $compra->cantidad }}</td>
                 <td>{{ $compra->nombrem }}</td>
             </tr>
