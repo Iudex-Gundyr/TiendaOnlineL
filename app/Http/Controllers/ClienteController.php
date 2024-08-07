@@ -41,16 +41,16 @@ class ClienteController extends Controller
             'password.confirmed' => 'Las contraseñas no coinciden.',
             'documentacion.regex' => 'El RUT debe tener un formato válido.',
         ]);
-
+    
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
+    
         // Crear nuevo cliente
         $cliente = new Cliente();
         $cliente->nombrec = $request->nombrec;
         $cliente->correo = $request->email;
-        $cliente->password = $request->password; // Hasheo de la contraseña
+        $cliente->password = bcrypt($request->password); // Hasheo de la contraseña
         $cliente->direccion = $request->direccion;
         $cliente->blockd = $request->block ?? null;
         $cliente->numerod = $request->numero;
@@ -61,10 +61,14 @@ class ClienteController extends Controller
         $cliente->documentacion = $request->documentacion;
         $cliente->fk_id_estadoel = 1; // Ajustar según tu lógica de estado
         $cliente->save();
-
+    
+        // Iniciar sesión automáticamente
+        Auth::guard('cliente')->login($cliente);
+    
         // Redireccionar con mensaje de éxito
-        return redirect()->back()->with('success_message', '¡Te has registrado, ya puedes iniciar sesión y comprar de nuestra gran variedad de productos!');
+        return redirect()->route('home')->with('success_message', '¡Te has registrado y has iniciado sesión automáticamente!');
     }
+    
 
     public function tomarRegiones($id)
     {
